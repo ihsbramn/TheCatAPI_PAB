@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TheCatAPI_PAB</string>
+    <string name="title_home">Home</string>
+    <string name="title_breeds">Breeds</string>
+    <string name="title_search">Search</string>
+    <string name="title_favourites">Favourites</string>
+</resources>
