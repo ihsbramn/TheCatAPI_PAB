@@ -1,6 +1,7 @@
 package com.rab.thecatapi_pab.ui.home;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -31,18 +32,34 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class HomeFragment extends Fragment {
 
     private static final String TAG = "HomeFragment";
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+    private View view;
+    private String globalID;
+    public static final MediaType JSON
+            = MediaType.get("application/json; charset=utf-8");
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+//        kHttpClient
+        OkHttpClient client = new OkHttpClient();
+//        endpoint
+        String BASE_URL = "https://api.thecatapi.com/v1/";
+//        ui handler
+        Handler uiHandler = new Handler(Looper.getMainLooper());
+
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
@@ -62,10 +79,6 @@ public class HomeFragment extends Fragment {
         binding.RandomCatCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                OkHttpClient
-                OkHttpClient client = new OkHttpClient();
-//                endpoint
-                String BASE_URL = "https://api.thecatapi.com/v1/";
                 Request randomCat = new Request.Builder()
                         .url(BASE_URL + "images/search")
                         .addHeader("x-api-key", "b7dfc536-2e87-40ac-ba6f-d3f14154ebee")
@@ -95,17 +108,18 @@ public class HomeFragment extends Fragment {
                                 JSONArray arrayJSON_RESP = new JSONArray(json);
                                 JSONObject objectJSON_RESP = arrayJSON_RESP.getJSONObject(0);
                                 String url = objectJSON_RESP.getString("url");
-
+//                                set global value id
+                                globalID = objectJSON_RESP.getString("id");
+//                                logger set id
+                                Log.d(TAG, "Global ID Set: " + globalID);
+//                                debug logger
+                                Log.d(TAG, "onResponse: url : "+url+" id : "+globalID);
 //                                Toast Property
                                 Context context = getContext();
                                 int duration = Toast.LENGTH_SHORT;
-                                String text = ("Meow ! "+url);
-
+                                String text = ("Meow !!");
 //                                img binding
                                 ImageView imageView = binding.imageContainer;
-
-//                                UiHandler
-                                Handler uiHandler = new Handler(Looper.getMainLooper());
                                 uiHandler.post(new Runnable() {
                                     @Override
                                     public void run() {
@@ -128,8 +142,68 @@ public class HomeFragment extends Fragment {
                 });
             }
         });
+
+//        binding fav button call
+        binding.FavButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: " + globalID);
+
+//                json string builder
+                 String bodyPostJSON = "{\"image_id\":\""+globalID+"\",\"sub_id\":\"ikhsan123\"}";
+
+                Request favCat = new Request.Builder()
+                        .url(BASE_URL + "favourites")
+                        .addHeader("x-api-key", "b7dfc536-2e87-40ac-ba6f-d3f14154ebee")
+                        .post(RequestBody.create(JSON, bodyPostJSON))
+                        .build();
+
+                client.newCall(favCat).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        Log.d(TAG, "onFailure: Favourites Request Failed");
+                    }
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        String json = null;
+                        json = response.body().string();
+                        if (response.code() == 200){
+                            Log.d(TAG, "onResponse: " + response.code()+ " Favourites Success " + json);
+//                        toast property
+                            Context context = getContext();
+                            int duration = Toast.LENGTH_SHORT;
+                            String text = ("Added to your favourites!");
+//                        toast
+                            uiHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast toast = Toast.makeText(context, text, duration);
+                                    toast.show();
+                                }
+                            });
+                        }else {
+                            Log.d(TAG, "Failed: " + response.code()+ " Favourites failed " + json);
+//                        toast property
+                            Context context = getContext();
+                            int duration = Toast.LENGTH_SHORT;
+                            String text = ("Already added to your Favourites");
+//                        toast
+                            uiHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast toast = Toast.makeText(context, text, duration);
+                                    toast.show();
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
         return root;
     }
+
+
 
     @Override
     public void onDestroyView() {
