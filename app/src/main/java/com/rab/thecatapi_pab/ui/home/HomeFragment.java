@@ -179,6 +179,8 @@ public class HomeFragment extends Fragment {
                                 public void run() {
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
+                                    MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.meow);
+                                    mp.start();
                                 }
                             });
                         }else {

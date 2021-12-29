@@ -10,7 +10,7 @@ public class BreedsViewModel extends ViewModel {
 
     public BreedsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Breeds fragment");
+        mText.setValue(" ");
     }
 
     public LiveData<String> getText() {
