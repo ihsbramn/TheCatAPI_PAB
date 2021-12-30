@@ -91,6 +91,7 @@ public class HomeFragment extends Fragment {
                         Log.d(TAG, "onFailure: ERROR!");
                         e.printStackTrace();
                     }
+
                     @Override
                     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
 //                        debug logger
@@ -113,7 +114,7 @@ public class HomeFragment extends Fragment {
 //                                logger set id
                                 Log.d(TAG, "Global ID Set: " + globalID);
 //                                debug logger
-                                Log.d(TAG, "onResponse: url : "+url+" id : "+globalID);
+                                Log.d(TAG, "onResponse: url : " + url + " id : " + globalID);
 //                                Toast Property
                                 Context context = getContext();
                                 int duration = Toast.LENGTH_SHORT;
@@ -130,6 +131,8 @@ public class HomeFragment extends Fragment {
 
                                         Toast toast = Toast.makeText(context, text, duration);
                                         toast.show();
+                                        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.meow);
+                                        mp.start();
                                     }
                                 });
 
@@ -150,7 +153,7 @@ public class HomeFragment extends Fragment {
                 Log.d(TAG, "onClick: " + globalID);
 
 //                json string builder
-                 String bodyPostJSON = "{\"image_id\":\""+globalID+"\",\"sub_id\":\"ikhsan123\"}";
+                String bodyPostJSON = "{\"image_id\":\"" + globalID + "\",\"sub_id\":\"ikhsan123\"}";
 
                 Request favCat = new Request.Builder()
                         .url(BASE_URL + "favourites")
@@ -163,12 +166,13 @@ public class HomeFragment extends Fragment {
                     public void onFailure(@NonNull Call call, @NonNull IOException e) {
                         Log.d(TAG, "onFailure: Favourites Request Failed");
                     }
+
                     @Override
                     public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                         String json = null;
                         json = response.body().string();
-                        if (response.code() == 200){
-                            Log.d(TAG, "onResponse: " + response.code()+ " Favourites Success " + json);
+                        if (response.code() == 200) {
+                            Log.d(TAG, "onResponse: " + response.code() + " Favourites Success " + json);
 //                        toast property
                             Context context = getContext();
                             int duration = Toast.LENGTH_SHORT;
@@ -179,12 +183,10 @@ public class HomeFragment extends Fragment {
                                 public void run() {
                                     Toast toast = Toast.makeText(context, text, duration);
                                     toast.show();
-                                    MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.meow);
-                                    mp.start();
                                 }
                             });
-                        }else {
-                            Log.d(TAG, "Failed: " + response.code()+ " Favourites failed " + json);
+                        } else {
+                            Log.d(TAG, "Failed: " + response.code() + " Favourites failed " + json);
 //                        toast property
                             Context context = getContext();
                             int duration = Toast.LENGTH_SHORT;
@@ -204,7 +206,6 @@ public class HomeFragment extends Fragment {
         });
         return root;
     }
-
 
 
     @Override
