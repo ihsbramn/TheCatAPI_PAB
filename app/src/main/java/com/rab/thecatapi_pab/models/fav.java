@@ -1,13 +1,19 @@
 package com.rab.thecatapi_pab.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class fav {
+public class fav implements Parcelable {
+
     private int id;
-    private String user_id;
     private String image_id;
-    private String created_at;
-    ArrayList<image> images;
+
+    public fav(int id, String image_id) {
+        this.id = id;
+        this.image_id = image_id;
+    }
 
     public int getId() {
         return id;
@@ -15,14 +21,6 @@ public class fav {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
     }
 
     public String getImage_id() {
@@ -33,40 +31,37 @@ public class fav {
         this.image_id = image_id;
     }
 
-    public String getCreated_at() {
-        return created_at;
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.image_id);
     }
 
-    public ArrayList<image> getImages() {
-        return images;
+    public void readFromParcel(Parcel source) {
+        this.id = source.readInt();
+        this.image_id = source.readString();
     }
 
-    public void setImages(ArrayList<image> images) {
-        this.images = images;
+    protected fav(Parcel in) {
+        this.id = in.readInt();
+        this.image_id = in.readString();
     }
 
-    public class image {
-        private int id;
-        private String url;
-
-        public int getId() {
-            return id;
+    public static final Creator<fav> CREATOR = new Creator<fav>() {
+        @Override
+        public fav createFromParcel(Parcel source) {
+            return new fav(source);
         }
 
-        public void setId(int id) {
-            this.id = id;
+        @Override
+        public fav[] newArray(int size) {
+            return new fav[size];
         }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-    }
+    };
 }
