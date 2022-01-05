@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinnerCategories">
+        <item>Boxes</item>
+        <item>Clothes</item>
+        <item>Hats</item>
+        <item>Sinks</item>
+        <item>Space</item>
+        <item>Sunglasses</item>
+        <item>Ties</item>
+    </string-array>
+</resources>
+
+

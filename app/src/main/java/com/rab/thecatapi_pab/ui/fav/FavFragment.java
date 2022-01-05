@@ -108,6 +108,11 @@ public class FavFragment extends Fragment {
                                             .get()
                                             .load(url)
                                             .into(imageView);
+                                    try {
+                                        binding.FavData.setText(arrayJsonResp.toString(4));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             });
 
@@ -117,7 +122,6 @@ public class FavFragment extends Fragment {
                         JSONObject objectJsonResp = arrayJsonResp.getJSONObject(0);
 
                         Log.d(TAG, "onResponse: " + arrayJsonResp);
-
 
 //                        uiHandler.post(new Runnable() {
 //                            @Override

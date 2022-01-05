@@ -20,9 +20,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/ImgFav"
+        android:layout_width="282dp"
+        android:layout_height="222dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_favourites"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="282dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImgFav">
+
+
+        <TextView
+            android:id="@+id/FavData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" " />
+
+    </ScrollView>
+
+    <!--    <TextView-->
+<!--        android:id="@+id/FavData"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="124dp"-->
+<!--        android:text=" "-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.164"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/ImgFav"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+
+    <!--        <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
 
 <!--        <TextView-->
@@ -37,17 +78,17 @@
 <!--            app:layout_constraintTop_toTopOf="parent"-->
 <!--            app:layout_constraintVertical_bias="0.027" />-->
 
-            <ImageView
-                android:id="@+id/ImgFav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:src="@tools:sample/avatars"
-                android:paddingLeft="16dp"
-                android:layout_marginTop="16dp"/>
+<!--            <ImageView-->
+<!--                android:id="@+id/ImgFav"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                tools:src="@tools:sample/avatars"-->
+<!--                android:paddingLeft="16dp"-->
+<!--                android:layout_marginTop="16dp"/>-->
 
 
 
-        </ScrollView>
+<!--        </ScrollView>-->
 
 
 
