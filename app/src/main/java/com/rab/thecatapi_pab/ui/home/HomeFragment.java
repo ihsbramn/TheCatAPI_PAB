@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-//        kHttpClient
+//        okHttpClient
         OkHttpClient client = new OkHttpClient();
 //        endpoint
         String BASE_URL = "https://api.thecatapi.com/v1/";

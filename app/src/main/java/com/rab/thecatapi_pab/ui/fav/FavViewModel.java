@@ -8,10 +8,10 @@ public class FavViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public FavViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue(" ");
-    }
+//    public FavViewModel() {
+//        mText = new MutableLiveData<>();
+//        mText.setValue(" ");
+//    }
 
     public LiveData<String> getText() {
         return mText;

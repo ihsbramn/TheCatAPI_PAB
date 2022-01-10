@@ -15,12 +15,14 @@
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.37447916666666664" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/activity_main.xml" value="0.35833333333333334" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/activity_splash.xml" value="0.32407407407407407" />
+        <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/cell.xml" value="0.2916666666666667" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/favlist.xml" value="0.3564102564102564" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/fragment_breeds.xml" value="0.33" />
-        <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/fragment_fav.xml" value="0.22" />
+        <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/fragment_fav.xml" value="0.33" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/fragment_favourites.xml" value="0.35833333333333334" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/fragment_search.xml" value="0.35833333333333334" />
+        <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/grid_item_layout.xml" value="0.21197916666666666" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/layout/list_fav.xml" value="0.6550424128180962" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/menu/bottom_nav_menu.xml" value="0.35833333333333334" />
         <entry key="..\:/AndroidStudio/TheCatAPI_PAB/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21822916666666667" />
